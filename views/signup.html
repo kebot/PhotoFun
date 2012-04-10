@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% block title %}Signup - PhotoFun{% endblock %}
+{% block main %}
+<div class="modal" id="myModal">
+  <form action="signup.php" method="post">
+    <div class="modal-header">
+      <h3>Create a new user</h3>
+    </div>
+    <div class="modal-body">
+      {% if error %}
+        <div class="alert alert-block">{{error}}</div>
+      {% endif %}
+      <input type="text" name="username" placeholder="username" />
+      <span class="help-inline">The username you want ...</span>
+      <hr />
+      <input type="password" name="password" placeholder="password" />
+      <span class="help-inline">Enter your password ...</span>
+      <input type="password" name="password2" placeholder="password" />
+      <span class="help-inline">Enter you password again ...</span>
+      <hr />
+      <input type="text" name="email" placeholder="email" />
+      <span class="help-inline">Your email address ...</span>
+    </div>
+    <div class="modal-footer">
+      <a href="/index.php" class="btn">Back</a>
+      <input type="submit" class="btn btn-primary" value="Signup" />
+    </div>
+  </form>
+</div> 
+
+{% endblock %}
+
+

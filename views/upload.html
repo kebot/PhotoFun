@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block title %}Upload - PhotoFun{% endblock %}
+{% block main %}
+<div class="modal" id="myModal">
+  <form action="upload.php?status=uploaded" method="post" enctype="multipart/form-data">
+    <div class="modal-header">
+      <h3>Upload Photo...</h3>
+    </div>
+    <div class="modal-body">
+      {% if error %}
+      <div class="alert alert-block">{{error}}</div>
+      {% endif %}
+      <input name="title" type="text" placeholder="title" />
+      <hr />
+      <input name="description" type="text" placeholder="description" />
+      <hr />
+      <input id="file" name="file" type="file" />
+    </div>
+    <div class="modal-footer">
+      <a href="/index.php" class="btn">Back</a>
+      <input type="submit" class="btn btn-primary" value="Upload" />
+    </div>
+  </form>
+</div> 
+{% endblock %}
