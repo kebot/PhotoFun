@@ -10,7 +10,7 @@ class Users extends FileStorage
   function __construct()
   {
     parent::__construct(BASEPATH . '/storage/users.txt', array(
-      'name', 'password', 'email'
+      'name', 'password', 'email', 'school', 'twitter'
     ));
   }
 
@@ -32,7 +32,7 @@ class Users extends FileStorage
     setcookie('username', $username);
   }
 
-  function signup($username, $password, $email){
+  function signup($username, $password, $email, $school, $twitter){
     if($username and $password and $email){
       if($this->find('name', $username)->current >= 0){
         $this->error_message = "User alread exists!";
@@ -40,7 +40,9 @@ class Users extends FileStorage
         $this->append(array(
           $username,
           $this->_password_hash($password),
-          $email
+          $email,
+          $school,
+          $twitter
         ))->save();
         return true;
       }

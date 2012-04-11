@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% block title %}Signup - PhotoFun{% endblock %}
 {% block main %}
-<div class="modal" id="myModal">
+<div class="modal" id="myModal" style="position:absolute;">
   <form action="signup.php" method="post">
     <div class="modal-header">
       <h3>Create a new user</h3>
@@ -20,6 +20,19 @@
       <hr />
       <input type="text" name="email" placeholder="email" />
       <span class="help-inline">Your email address ...</span>
+      <hr />
+      <select name="school">
+      	<option value="utas">utas</option>
+      	<option value="zjut">zjut</option>
+      </select>
+      <span class="help-inline">Select your school.</span>
+      <hr />
+      <input name="twitter" type="text" />
+      <span class="help-inline">Your twitter account.</span>
+      <label for="login" class="checkbox">
+        <input name="login" type="checkbox" />
+        login after signup
+      </label>
     </div>
     <div class="modal-footer">
       <a href="/index.php" class="btn">Back</a>

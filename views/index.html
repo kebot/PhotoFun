@@ -9,25 +9,32 @@
   <hr />
   <div class="container">
     <div class="row">
+      {% if current %}
       <div class="span1 arrow">
         {% if previous %}
-          <a href="/index.php?id={{previous.id}}" class="btn"><i class="icon-arrow-left"></i>Previous</a>
+          <a href="index.php?id={{previous.id}}" class="btn"><i class="icon-arrow-left"></i>Previous</a>
         {% endif %}
       </div>
       <div class="span10">
-        {% if current %}
          <div class="thumbnail">
           <img
           src="/static/submissions/{{current.filename}}"
           alt="title" />
         </div>
-        {% endif %}
       </div>
       <div class="span1 arrow">
         {% if next %}
-          <a href="/index.php?id={{next.id}}" class="btn">Next<i class="icon-arrow-right"></i></a>
+          <a href="index.php?id={{next.id}}" class="btn">Next<i class="icon-arrow-right"></i></a>
         {% endif %}
       </div>
+      {% else %}
+        {% if current_user %}
+          <h1 class="heading">No Photo, please <a href="upload.php">upload</a> your photo. </h1>
+        {% else %}
+        <h1 class="heading">No Photo, please <a href="login.php">login</a> to upload your photo. </h1>
+        {% endif %}
+        
+      {% endif %}
     </div>
     <hr />
     <div class="row">
@@ -46,9 +53,10 @@
         <hr />
         {% endfor %}
         <!-- comments end -->
+        {% if current %}
         {% if current_user %}
         <div class="row">
-          <form action="/post.php" method="post" class="offset2 form-search">
+          <form action="post.php" method="post" class="offset2 form-search">
             <input name="id" type="hidden" value="{{current.id}}" />
             <div class="input-append">
               <input id="comment-input" name="comment" class="span6" type="text" />
@@ -59,6 +67,7 @@
         {% else %}
           <label class="alert">Login to comment.</label>
         {% endif %}
+        {% endif %} 
       </div>
     </div>
   </div>
